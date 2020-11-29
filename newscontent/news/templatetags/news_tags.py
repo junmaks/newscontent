@@ -3,7 +3,7 @@ from django import template
 register = template.Library()
 
 
-from news.models import Category
+from news.models import Category, News
 
 
 
