@@ -6,19 +6,11 @@
 
 
 {% block sidebar %}
-<div class="col-md-2">
-  <div class="list-group">
-    {% for category in categories %}
-    <a href="{% url 'category' category.pk %}" class="list-group-item list-group-item-action">{{category.title}}</a>
-    {% endfor %}
-  </div>
-</div>
-
+{% include 'inc/_sidebar.html' %}
 {% endblock %}
 
 
 {% block content %}
-<div class="col-md-10">
   {% for item in news %}
   <div class="card mb-3">
     <div class="card-header">
@@ -43,7 +35,6 @@
     </div>
   </div>
   {% endfor %}
-</div>
 {% endblock %}
 
 
