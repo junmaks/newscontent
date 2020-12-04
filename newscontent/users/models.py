@@ -3,28 +3,11 @@ from newscontent import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
-from django.contrib.auth.models import AbstractUser
 
 
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
-
-#
-# class CustomUser(AbstractUser):
-#     date_both = models.DateField(verbose_name='Дата рождения', blank=True, null=True)
-#
-#     class Meta:
-#         verbose_name = 'Пользователи'
-#         verbose_name_plural = 'Пользователи'
-#         ordering = ['username']
-#
-# @receiver(post_save, sender=settings.AUTH_USER_MODEL)
-# def create_auth_token(sender, instance=None, created=False, **kwargs):
-#     if created:
-#         Token.objects.create(user=instance)
-
-
 
 
 class MyAccountManager(BaseUserManager):
@@ -64,7 +47,6 @@ class MyAccountManager(BaseUserManager):
 class Account(AbstractBaseUser):
     username = models.CharField(max_length=30, unique=True, verbose_name='Логин')
     email = models.EmailField(verbose_name='Email', max_length=255, unique=True, )
-    # date_of_birth = models.DateField(verbose_name='Дата рождения')
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
